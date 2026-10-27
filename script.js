@@ -247,9 +247,9 @@ const PASSO = 30; // de quanto em quanto tempo os horários começam
       form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
-    // Botões "Agendar" dos cartões de serviço já escolhem o serviço
-    document.querySelectorAll('a[data-servico]').forEach(a =>
-      a.addEventListener('click', () => escolherServico(a.dataset.servico)));
+    // Botões "Agendar" dos cartões de serviço chegam como agendar.html?servico=henna
+    const servicoDoLink = new URLSearchParams(location.search).get('servico');
+    estado.servico = SERVICOS.find(s => s.id === servicoDoLink) || null;
 
     form.addEventListener('submit', async e => {
       e.preventDefault();
