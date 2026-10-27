@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Agenda · Cláudia Melo Beauty</title>
+  <meta name="theme-color" content="#fcf6ee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+  <main class="admin">
+    <div class="container">
+      <div class="admin__top">
+        <a href="index.html" class="brand">
+          <span class="brand__name">Cláudia Melo <em>Beauty</em></span>
+          <span class="brand__tag">minha agenda</span>
+        </a>
+        <button class="pill" id="sair" hidden>Sair</button>
+      </div>
+
+      <!-- Login -->
+      <form class="admin__card admin__login" id="login" hidden>
+        <h2>Entrar na agenda</h2>
+        <label>E-mail<input type="email" name="email" required autocomplete="username"></label>
+        <label>Senha<input type="password" name="senha" required autocomplete="current-password"></label>
+        <p class="booking__error" id="loginErro" role="alert"></p>
+        <button class="pill pill--lg" type="submit">Entrar</button>
+      </form>
+
+      <div id="painel" hidden>
+        <!-- Agendamentos -->
+        <section class="admin__card">
+          <h2>Próximos atendimentos</h2>
+          <div id="lista"><p class="admin__empty">Carregando...</p></div>
+        </section>
+
+        <!-- Bloqueios -->
+        <section class="admin__card">
+          <h2>Bloquear horários</h2>
+          <p class="admin__empty" style="margin-bottom:16px">Folga, consulta, compromisso... Os horários bloqueados somem da agenda do site.</p>
+          <form class="admin__block" id="bloqueio">
+            <label>Dia<input type="date" name="dia" required></label>
+            <label>Das<input type="time" name="de" value="07:30" step="1800"></label>
+            <label>Até<input type="time" name="ate" value="18:00" step="1800"></label>
+            <label>Motivo<input name="motivo" maxlength="60" placeholder="Opcional"></label>
+            <button class="pill" type="submit">Bloquear</button>
+            <label class="admin__check"><input type="checkbox" name="inteiro"> Dia inteiro</label>
+          </form>
+          <p class="booking__error" id="bloqueioErro" role="alert"></p>
+          <div id="bloqueios"></div>
+        </section>
+      </div>
+
+      <p class="booking__error" id="semConfig" hidden>A agenda ainda não foi ligada ao Supabase. Preencha SUPABASE_URL e SUPABASE_ANON_KEY no começo do script.js (veja o COMO-CONFIGURAR.md).</p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js?v=1"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cláudia Melo Beauty | Especialista em Sobrancelhas</title>
+  <meta name="description" content="Design de sobrancelhas personalizado, design com henna, tintura e brow lamination com Cláudia Melo Beauty. Consultora Farmasi. Agende pelo WhatsApp.">
+  <meta property="og:title" content="Cláudia Melo Beauty | Especialista em Sobrancelhas">
+  <meta property="og:description" content="Sobrancelhas desenhadas sob medida, com o cuidado de quem vem da área da saúde.">
+  <meta property="og:image" content="design-henna.webp">
+  <meta name="theme-color" content="#fcf6ee">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand" aria-label="Cláudia Melo Beauty">
+        <span class="brand__name">Cláudia Melo <em>Beauty</em></span>
+        <span class="brand__tag">especialista em sobrancelhas</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre mim</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#loja">Loja</a>
+        <a href="#duvidas">Dúvidas</a>
+        <a href="#agendar" class="pill">Agendar</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container hero__grid">
+      <div class="hero__text">
+        <p class="eyebrow reveal">Olá, eu sou a Cláudia ✦</p>
+        <h1 class="reveal">Sobrancelhas feitas <em>para o seu rosto</em>, não para a moda.</h1>
+        <p class="hero__lead reveal">Design personalizado e henna com atenção a cada detalhe e o cuidado de quem vem da área da saúde.</p>
+        <div class="hero__cta reveal">
+          <a href="#agendar" class="pill pill--lg">Ver horários livres
+          </a>
+          <a href="#servicos" class="text-link">Ver serviços</a>
+        </div>
+        <ul class="hero__chips reveal">
+          <li>Design personalizado</li>
+          <li>Design com henna</li>
+          <li>Tintura</li>
+          <li class="is-soon">Brow lamination · em breve</li>
+        </ul>
+      </div>
+      <div class="hero__visual reveal">
+        <div class="hero__blob"></div>
+        <img class="hero__portrait" src="claudia.webp" alt="Cláudia Melo, designer de sobrancelhas">
+        <figure class="hero__mini">
+          <img src="design-henna.webp" alt="Sobrancelha com design e henna">
+          <figcaption>Design com henna</figcaption>
+        </figure>
+        <div class="hero__since"><strong>Desde 2023</strong><span>cuidando de sobrancelhas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faixa animada -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Design personalizado</span><i>✦</i><span>Design com henna</span><i>✦</i><span>Tintura</span><i>✦</i><span>Brow lamination</span><i>✦</i>
+      <span>Design personalizado</span><i>✦</i><span>Design com henna</span><i>✦</i><span>Tintura</span><i>✦</i><span>Brow lamination</span><i>✦</i>
+    </div>
+  </div>
+
+  <!-- Serviços -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="title reveal">
+        <p class="eyebrow">Serviços</p>
+        <h2>O que eu posso <em>fazer por você</em></h2>
+      </div>
+      <div class="cards">
+        <article class="card reveal">
+          <span class="card__num">01</span>
+          <h3>Design personalizado</h3>
+          <p>Mapeamento do rosto e modelagem dos fios respeitando as suas proporções e o seu estilo.</p>
+          <a href="#agendar" data-servico="design" class="card__link">Agendar →</a>
+        </article>
+        <article class="card card--featured reveal">
+          <span class="card__num">02</span>
+          <h3>Design com henna</h3>
+          <p>Além do desenho, a henna dá cor e preenche falhas com um efeito sombreado e natural.</p>
+          <a href="#agendar" data-servico="henna" class="card__link">Agendar →</a>
+        </article>
+        <article class="card reveal">
+          <span class="card__num">03</span>
+          <h3>Tintura</h3>
+          <p>Realça a cor dos fios, deixando as sobrancelhas mais marcadas com acabamento natural.</p>
+          <a href="#agendar" data-servico="tintura" class="card__link">Agendar →</a>
+        </article>
+        <article class="card card--soon reveal">
+          <span class="badge">Em breve</span>
+          <span class="card__num">04</span>
+          <h3>Brow lamination</h3>
+          <p>Fios alinhados e penteados para cima, com aparência de sobrancelhas mais cheias.</p>
+          <a data-wpp="Olá, Cláudia! Quero ser avisada quando o brow lamination estiver disponível." class="card__link">Quero ser avisada →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sobre -->
+  <section class="about" id="sobre">
+    <div class="container about__grid">
+      <div class="about__text reveal">
+        <p class="eyebrow eyebrow--light">Sobre mim</p>
+        <h2>Uma mudança de rota que <em>virou paixão</em></h2>
+        <p>Sou formada como técnica em enfermagem. Depois que me tornei mãe, quis algo que me permitisse estar presente nos momentos com o meu filho, sem perder nenhum deles.</p>
+        <p>Foi assim que fiz o curso de design de sobrancelhas, e desde então a paixão só aumenta, junto com a vontade de crescer na profissão. Atuo na área desde dezembro de 2023.</p>
+        <blockquote>“Da enfermagem eu trouxe o olhar cuidadoso e o compromisso com a higiene. Da maternidade, a paciência e o carinho em cada atendimento.”</blockquote>
+      </div>
+      <div class="about__facts reveal">
+        <div class="fact"><strong>Técnica</strong><span>em enfermagem</span></div>
+        <div class="fact"><strong>Dez/2023</strong><span>início na área</span></div>
+        <div class="fact"><strong>Mãe</strong><span>e apaixonada pelo que faz</span></div>
+        <div class="fact fact--accent"><strong>100%</strong><span>atendimento personalizado</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cuidados -->
+  <section class="section care">
+    <div class="container care__grid">
+      <div class="reveal">
+        <p class="eyebrow">Biossegurança</p>
+        <h2>Cuidado de quem <em>vem da saúde</em></h2>
+      </div>
+      <ul class="care__list reveal">
+        <li><b>Materiais descartáveis</b> em todos os atendimentos</li>
+        <li><b>Pinças esterilizadas</b> a cada atendimento</li>
+        <li><b>Luvas e máscara</b> durante todo o procedimento</li>
+        <li><b>Conversa sobre alergias</b> antes de aplicar a henna</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Resultados -->
+  <section class="section results" id="resultados">
+    <div class="container">
+      <div class="title title--row reveal">
+        <div>
+          <p class="eyebrow">Resultados</p>
+          <h2>Trabalhos <em>reais</em></h2>
+        </div>
+        <a data-insta class="text-link">Ver mais no Instagram →</a>
+      </div>
+      <div class="results__grid">
+        <figure class="reveal"><img src="design-henna.webp" alt="Design de sobrancelha com henna" loading="lazy"><figcaption>Design com henna</figcaption></figure>
+        <figure class="reveal"><img src="design-personalizado.webp" alt="Design de sobrancelhas personalizado" loading="lazy"><figcaption>Design personalizado</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Loja Farmasi -->
+  <section class="section shop" id="loja">
+    <div class="container">
+      <div class="shop__box reveal">
+        <div class="shop__text">
+          <p class="eyebrow eyebrow--light">Consultora Farmasi</p>
+          <h2>Cosméticos que <em>eu indico</em></h2>
+          <p>Além das sobrancelhas, também sou consultora Farmasi, uma marca de dermocosméticos que cuida de você e do planeta. Compre direto pela minha loja online e receba em casa.</p>
+          <ul class="shop__perks">
+            <li>Livre de metais pesados e parabenos</li>
+            <li>Veganos</li>
+            <li>Não testados em animais</li>
+          </ul>
+          <a href="https://www.farmasi.com.br/claudiaemillemelosilva" target="_blank" rel="noopener" class="pill pill--light pill--lg">Conhecer a loja Farmasi →</a>
+        </div>
+        <ul class="shop__tags" aria-label="Categorias">
+          <li>Perfumes</li>
+          <li>Skincare</li>
+          <li>Maquiagem</li>
+          <li>Cuidados pessoais</li>
+          <li>Bem-estar</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Como funciona -->
+  <section class="section steps">
+    <div class="container">
+      <div class="title reveal">
+        <p class="eyebrow">Passo a passo</p>
+        <h2>Como é o <em>atendimento</em></h2>
+      </div>
+      <ol class="steps__line">
+        <li class="reveal"><span>1</span><h4>Você agenda</h4><p>Pelo site, escolhendo um horário livre.</p></li>
+        <li class="reveal"><span>2</span><h4>Avaliamos juntas</h4><p>Olho o seu rosto, os seus fios e o que você deseja.</p></li>
+        <li class="reveal"><span>3</span><h4>Mãos à obra</h4><p>Procedimento com calma, conforto e higiene.</p></li>
+        <li class="reveal"><span>4</span><h4>Pós-cuidados</h4><p>Dicas para o resultado durar mais.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Agendamento online -->
+  <section class="section booking" id="agendar">
+    <div class="container">
+      <div class="title reveal">
+        <p class="eyebrow">Agenda online</p>
+        <h2>Escolha o seu <em>horário</em></h2>
+        <p class="booking__intro">Segunda a sábado, das 7h30 às 10h30 e das 12h30 às 18h. O seu horário fica confirmado na hora.</p>
+      </div>
+      <div class="booking__box reveal" id="agenda">
+        <div class="booking__step">
+          <h3><span>1</span> Serviço</h3>
+          <div class="booking__services" id="agServicos"></div>
+        </div>
+        <div class="booking__step">
+          <h3><span>2</span> Dia</h3>
+          <div class="booking__days" id="agDias"></div>
+        </div>
+        <div class="booking__step">
+          <h3><span>3</span> Horário</h3>
+          <div class="booking__slots" id="agHorarios"></div>
+        </div>
+        <form class="booking__form" id="agForm" hidden>
+          <p class="booking__summary" id="agResumo"></p>
+          <div class="booking__fields">
+            <label>Seu nome<input name="nome" required minlength="2" maxlength="80" autocomplete="name"></label>
+            <label>WhatsApp com DDD<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(28) 99999-9999"></label>
+          </div>
+          <p class="booking__error" id="agErro" role="alert"></p>
+          <button class="pill pill--lg" type="submit">Confirmar agendamento</button>
+        </form>
+        <div class="booking__done" id="agSucesso" hidden></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dúvidas -->
+  <section class="section faq" id="duvidas">
+    <div class="container faq__wrap">
+      <div class="title reveal">
+        <p class="eyebrow">Dúvidas</p>
+        <h2>Perguntas <em>frequentes</em></h2>
+      </div>
+      <div class="faq__list reveal">
+        <details open>
+          <summary>Qual a diferença entre o design personalizado e o com henna?</summary>
+          <p>O design personalizado modela os fios de acordo com as proporções do seu rosto. Com henna, além do desenho, pele e fios ganham cor, preenchendo falhas com efeito sombreado.</p>
+        </details>
+        <details>
+          <summary>Quanto tempo dura a henna?</summary>
+          <p>Na pele, costuma durar de 7 a 15 dias, e nos fios um pouco mais. Varia conforme a oleosidade da pele e os cuidados em casa.</p>
+        </details>
+        <details>
+          <summary>De quanto em quanto tempo refaço o design?</summary>
+          <p>O ideal é a cada 15 a 20 dias, acompanhando o crescimento dos fios.</p>
+        </details>
+        <details>
+          <summary>Tenho pele sensível. Posso fazer?</summary>
+          <p>Antes de qualquer procedimento conversamos sobre alergias e sensibilidades. Se for preciso, fazemos um teste antes da aplicação da henna.</p>
+        </details>
+        <details>
+          <summary>Como faço para comprar os produtos Farmasi?</summary>
+          <p>É só acessar a minha <a href="https://www.farmasi.com.br/claudiaemillemelosilva" target="_blank" rel="noopener">loja online</a> e finalizar a compra por lá. Se tiver dúvida sobre algum produto, me chama no WhatsApp.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contato -->
+  <section class="contact" id="contato">
+    <div class="container contact__box reveal">
+      <p class="contact__quote">Não é sobre mudar. É sobre revelar o que já existe em você.</p>
+      <h2>Vamos cuidar das suas <em>sobrancelhas?</em></h2>
+      <p>Atendimento somente com hora marcada. Me chama no WhatsApp para ver os horários disponíveis.</p>
+      <div class="contact__actions">
+        <a data-wpp="Olá, Cláudia! Gostaria de agendar um horário." class="pill pill--lg">
+          <svg class="ico" viewBox="0 0 32 32"><use href="#i-wpp"/></svg> <span data-wpp-label></span>
+        </a>
+        <a data-insta class="pill pill--outline pill--lg">
+          <svg class="ico ico--line" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8"/></svg> @claudiamelo
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand__name">Cláudia Melo <em>Beauty</em></span>
+      <nav>
+        <a href="#servicos">Serviços</a>
+        <a href="#sobre">Sobre mim</a>
+        <a href="#loja">Loja Farmasi</a>
+        <a data-insta>Instagram</a>
+        <a data-wpp="Olá, Cláudia!">WhatsApp</a>
+      </nav>
+      <small>© <span id="year"></span> Cláudia Melo Beauty · Especialista em sobrancelhas · Consultora Farmasi</small>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a data-wpp="Olá, Cláudia! Gostaria de agendar um horário." class="wpp-float" aria-label="Agendar pelo WhatsApp">
+    <svg viewBox="0 0 32 32"><use href="#i-wpp"/></svg>
+  </a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wpp" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.2 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
+  </svg>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js?v=1"></script>
+</body>
+</html>
