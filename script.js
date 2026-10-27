@@ -8,8 +8,8 @@ const INSTAGRAM_URL = 'https://www.instagram.com/claudiamelo/';
 
 // Dados do projeto no Supabase (Project Settings → API).
 // Enquanto estiver vazio, a agenda mostra o botão do WhatsApp no lugar.
-const SUPABASE_URL = '';      // ex.: 'https://abcdefgh.supabase.co'
-const SUPABASE_ANON_KEY = ''; // chave "anon" / "publishable" (é pública, pode ficar aqui)
+const SUPABASE_URL = 'https://bpchbhoroxixmwrstftr.supabase.co';      // ex.: 'https://abcdefgh.supabase.co'
+const SUPABASE_ANON_KEY = 'sb_publishable_siDKA-49gu_IK99aiDYK_Q_GKo9GV3M'; // chave "anon" / "publishable" (é pública, pode ficar aqui)
 
 // Regras da agenda (as mesmas estão no supabase.sql, função agendar)
 const SERVICOS = [
