@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
         <a href="#resultados">Resultados</a>
         <a href="#loja">Loja</a>
         <a href="#duvidas">Dúvidas</a>
-        <a href="#agendar" class="pill">Agendar</a>
+        <a href="agendar.html" class="pill">Agendar</a>
       </nav>
       <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span></button>
     </div>
@@ -43,7 +43,7 @@
         <h1 class="reveal">Sobrancelhas feitas <em>para o seu rosto</em>, não para a moda.</h1>
         <p class="hero__lead reveal">Design personalizado e henna com atenção a cada detalhe e o cuidado de quem vem da área da saúde.</p>
         <div class="hero__cta reveal">
-          <a href="#agendar" class="pill pill--lg">Ver horários livres
+          <a href="agendar.html" class="pill pill--lg">Ver horários livres
           </a>
           <a href="#servicos" class="text-link">Ver serviços</a>
         </div>
@@ -86,19 +86,19 @@
           <span class="card__num">01</span>
           <h3>Design personalizado</h3>
           <p>Mapeamento do rosto e modelagem dos fios respeitando as suas proporções e o seu estilo.</p>
-          <a href="#agendar" data-servico="design" class="card__link">Agendar →</a>
+          <a href="agendar.html?servico=design" class="card__link">Agendar →</a>
         </article>
         <article class="card card--featured reveal">
           <span class="card__num">02</span>
           <h3>Design com henna</h3>
           <p>Além do desenho, a henna dá cor e preenche falhas com um efeito sombreado e natural.</p>
-          <a href="#agendar" data-servico="henna" class="card__link">Agendar →</a>
+          <a href="agendar.html?servico=henna" class="card__link">Agendar →</a>
         </article>
         <article class="card reveal">
           <span class="card__num">03</span>
           <h3>Tintura</h3>
           <p>Realça a cor dos fios, deixando as sobrancelhas mais marcadas com acabamento natural.</p>
-          <a href="#agendar" data-servico="tintura" class="card__link">Agendar →</a>
+          <a href="agendar.html?servico=tintura" class="card__link">Agendar →</a>
         </article>
         <article class="card card--soon reveal">
           <span class="badge">Em breve</span>
@@ -205,41 +205,6 @@
     </div>
   </section>
 
-  <!-- Agendamento online -->
-  <section class="section booking" id="agendar">
-    <div class="container">
-      <div class="title reveal">
-        <p class="eyebrow">Agenda online</p>
-        <h2>Escolha o seu <em>horário</em></h2>
-        <p class="booking__intro">Segunda a sábado, das 7h30 às 10h30 e das 12h30 às 18h. O seu horário fica confirmado na hora.</p>
-      </div>
-      <div class="booking__box reveal" id="agenda">
-        <div class="booking__step">
-          <h3><span>1</span> Serviço</h3>
-          <div class="booking__services" id="agServicos"></div>
-        </div>
-        <div class="booking__step">
-          <h3><span>2</span> Dia</h3>
-          <div class="booking__days" id="agDias"></div>
-        </div>
-        <div class="booking__step">
-          <h3><span>3</span> Horário</h3>
-          <div class="booking__slots" id="agHorarios"></div>
-        </div>
-        <form class="booking__form" id="agForm" hidden>
-          <p class="booking__summary" id="agResumo"></p>
-          <div class="booking__fields">
-            <label>Seu nome<input name="nome" required minlength="2" maxlength="80" autocomplete="name"></label>
-            <label>WhatsApp com DDD<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(28) 99999-9999"></label>
-          </div>
-          <p class="booking__error" id="agErro" role="alert"></p>
-          <button class="pill pill--lg" type="submit">Confirmar agendamento</button>
-        </form>
-        <div class="booking__done" id="agSucesso" hidden></div>
-      </div>
-    </div>
-  </section>
-
   <!-- Dúvidas -->
   <section class="section faq" id="duvidas">
     <div class="container faq__wrap">
@@ -313,7 +278,6 @@
     <symbol id="i-wpp" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.2 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
   </svg>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=1"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>
