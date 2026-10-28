@@ -3,68 +3,102 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>Agenda · Cláudia Melo Beauty</title>
+  <title>Agendar horário | Cláudia Melo Beauty</title>
+  <meta name="description" content="Agende o seu design de sobrancelhas com a Cláudia Melo Beauty. Veja os horários livres e confirme na hora.">
+  <meta property="og:title" content="Agendar horário | Cláudia Melo Beauty">
+  <meta property="og:description" content="Escolha o serviço, o dia e o horário livre. Confirmação na hora.">
+  <meta property="og:image" content="design-henna.webp">
   <meta name="theme-color" content="#fcf6ee">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css?v=6">
 </head>
-<body>
-  <main class="admin">
+<body class="page-agendar">
+
+  <!-- Cabeçalho -->
+  <header class="header scrolled" id="header">
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="Cláudia Melo Beauty">
+        <span class="brand__name">Cláudia Melo <em>Beauty</em></span>
+        <span class="brand__tag">especialista em sobrancelhas</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#sobre">Sobre mim</a>
+        <a href="index.html#resultados">Resultados</a>
+        <a href="index.html#loja">Loja</a>
+        <a href="index.html#duvidas">Dúvidas</a>
+        <a href="index.html" class="pill pill--outline">Voltar ao site</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Abrir menu"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <!-- Agendamento online -->
+  <main class="section booking booking--page" id="agendar">
     <div class="container">
-      <div class="admin__top">
-        <a href="index.html" class="brand">
-          <span class="brand__name">Cláudia Melo <em>Beauty</em></span>
-          <span class="brand__tag">minha agenda</span>
-        </a>
-        <button class="pill" id="sair" hidden>Sair</button>
+      <div class="title">
+        <p class="eyebrow">Agenda online</p>
+        <h1>Escolha o seu <em>horário</em></h1>
+        <p class="booking__intro">Segunda a sábado, das 7h30 às 10h30 e das 12h30 às 18h. O seu horário fica confirmado na hora.</p>
+      </div>
+      <div class="booking__box" id="agenda">
+        <div class="booking__step">
+          <h3><span>1</span> Serviço</h3>
+          <div class="booking__services" id="agServicos"></div>
+        </div>
+        <div class="booking__step">
+          <h3><span>2</span> Dia</h3>
+          <div class="booking__days" id="agDias"></div>
+        </div>
+        <div class="booking__step">
+          <h3><span>3</span> Horário</h3>
+          <div class="booking__slots" id="agHorarios"></div>
+        </div>
+        <form class="booking__form" id="agForm" hidden>
+          <p class="booking__summary" id="agResumo"></p>
+          <div class="booking__fields">
+            <label>Seu nome<input name="nome" required minlength="2" maxlength="80" autocomplete="name"></label>
+            <label>WhatsApp com DDD<input name="whatsapp" required inputmode="tel" autocomplete="tel" placeholder="(28) 99999-9999"></label>
+          </div>
+          <p class="booking__error" id="agErro" role="alert"></p>
+          <button class="pill pill--lg" type="submit">Confirmar agendamento</button>
+        </form>
+        <div class="booking__done" id="agSucesso" hidden></div>
       </div>
 
-      <!-- Login -->
-      <form class="admin__card admin__login" id="login" hidden>
-        <h2>Entrar na agenda</h2>
-        <label>E-mail<input type="email" name="email" required autocomplete="username"></label>
-        <label>Senha<input type="password" name="senha" required autocomplete="current-password"></label>
-        <p class="booking__error" id="loginErro" role="alert"></p>
-        <button class="pill pill--lg" type="submit">Entrar</button>
-      </form>
-
-      <div id="painel" hidden>
-        <!-- Agendamentos -->
-        <section class="admin__card">
-          <h2>Próximos atendimentos</h2>
-          <div id="lista"><p class="admin__empty">Carregando...</p></div>
-        </section>
-
-        <!-- Clientes -->
-        <section class="admin__card" id="secaoClientes">
-          <h2>Clientes</h2>
-          <input type="search" class="admin__search" id="buscaCliente" placeholder="Buscar por nome ou WhatsApp" autocomplete="off">
-          <div id="clientes"><p class="admin__empty">Carregando...</p></div>
-        </section>
-
-        <!-- Bloqueios -->
-        <section class="admin__card">
-          <h2>Bloquear horários</h2>
-          <p class="admin__empty" style="margin-bottom:16px">Folga, consulta, compromisso... Os horários bloqueados somem da agenda do site.</p>
-          <form class="admin__block" id="bloqueio">
-            <label>Dia<input type="date" name="dia" required></label>
-            <label>Das<input type="time" name="de" value="07:30" step="1800"></label>
-            <label>Até<input type="time" name="ate" value="18:00" step="1800"></label>
-            <label>Motivo<input name="motivo" maxlength="60" placeholder="Opcional"></label>
-            <button class="pill" type="submit">Bloquear</button>
-            <label class="admin__check"><input type="checkbox" name="inteiro"> Dia inteiro</label>
-          </form>
-          <p class="booking__error" id="bloqueioErro" role="alert"></p>
-          <div id="bloqueios"></div>
-        </section>
-      </div>
-
-      <p class="booking__error" id="semConfig" hidden>A agenda ainda não foi ligada ao Supabase. Preencha SUPABASE_URL e SUPABASE_ANON_KEY no começo do script.js (veja o COMO-CONFIGURAR.md).</p>
+      <ul class="booking__tips">
+        <li><b>Chegue no horário:</b> deixo 30 min entre um atendimento e outro, mas atrasos podem diminuir o seu tempo.</li>
+        <li><b>Venha sem maquiagem</b> na região das sobrancelhas.</li>
+        <li><b>Precisa desmarcar?</b> Avise pelo <a data-wpp="Olá, Cláudia! Preciso desmarcar/remarcar o meu horário.">WhatsApp</a> com antecedência.</li>
+      </ul>
     </div>
   </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="brand__name">Cláudia Melo <em>Beauty</em></span>
+      <nav>
+        <a href="index.html">Início</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="index.html#loja">Loja Farmasi</a>
+        <a data-insta>Instagram</a>
+        <a data-wpp="Olá, Cláudia!">WhatsApp</a>
+      </nav>
+      <small>© <span id="year"></span> Cláudia Melo Beauty · Especialista em sobrancelhas · Consultora Farmasi</small>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a data-wpp="Olá, Cláudia! Tenho uma dúvida sobre o agendamento." class="wpp-float" aria-label="Falar pelo WhatsApp">
+    <svg viewBox="0 0 32 32"><use href="#i-wpp"/></svg>
+  </a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-wpp" viewBox="0 0 32 32"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.7c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.7 10.7 0 1 1 16 26.7zm5.9-8c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.8 8.8 0 0 1-4.4-3.8c-.3-.6.3-.5 1-1.8.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.8 5.2 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></symbol>
+  </svg>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="script.js?v=3"></script>
