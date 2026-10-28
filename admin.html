@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <main class="admin">
@@ -38,6 +38,13 @@
           <div id="lista"><p class="admin__empty">Carregando...</p></div>
         </section>
 
+        <!-- Clientes -->
+        <section class="admin__card" id="secaoClientes">
+          <h2>Clientes</h2>
+          <input type="search" class="admin__search" id="buscaCliente" placeholder="Buscar por nome ou WhatsApp" autocomplete="off">
+          <div id="clientes"><p class="admin__empty">Carregando...</p></div>
+        </section>
+
         <!-- Bloqueios -->
         <section class="admin__card">
           <h2>Bloquear horários</h2>
@@ -60,6 +67,6 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>
