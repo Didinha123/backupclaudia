@@ -356,14 +356,16 @@ h1 em, h2 em, .brand__name em { font-style: italic; color: var(--rust); }
 .client__summary { font-size: .92rem; }
 .client__summary b { color: var(--rust); }
 .client__history { list-style: none; display: grid; gap: 6px; }
-.client__history li { display: grid; grid-template-columns: 150px 1fr auto; gap: 10px; align-items: center; font-size: .9rem; padding: 6px 0; border-bottom: 1px dotted var(--cream-100); }
+.client__history li { display: grid; grid-template-columns: 150px 1fr auto auto; gap: 10px; align-items: center; font-size: .9rem; padding: 6px 0; border-bottom: 1px dotted var(--cream-100); }
 .client__status { font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
 .client__status.is-done { background: #e6ead8; color: var(--olive); }
 .client__status.is-next { background: var(--cream-100); color: var(--rust); }
 .client__status.is-cancel { background: #f3e1dc; color: #a33a1f; text-decoration: line-through; }
-.client .text-link { justify-self: start; }
+.client__actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.client__del { width: 26px; height: 26px; border-radius: 50%; border: 1px solid var(--cream-200); background: none; color: var(--text); font-size: .7rem; cursor: pointer; }
+.client__del:hover { border-color: #a33a1f; color: #a33a1f; }
 @media (max-width: 640px) {
   .client__stats { justify-items: start; text-align: left; }
-  .client__history li { grid-template-columns: 1fr auto; }
+  .client__history li { grid-template-columns: 1fr auto auto; }
   .client__history li > :first-child { grid-column: 1 / -1; font-weight: 600; }
 }
