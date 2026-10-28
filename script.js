@@ -353,7 +353,7 @@ const PASSO = 30; // de quanto em quanto tempo os horários começam
             <div class="admin__item">
               <span class="admin__time">${fmtHora(a.inicio)} – ${fmtHora(a.fim)}</span>
               <div>
-                <strong>${esc(a.nome)}</strong> <span class="admin__tag">${esc(nomes[a.servico] || a.servico)}</span><br>
+                <button type="button" class="admin__client-link" data-cliente="${esc(a.whatsapp)}" title="Ver histórico">${esc(a.nome)}</button> <span class="admin__tag">${esc(nomes[a.servico] || a.servico)}</span><br>
                 <a href="${linkCliente(a.whatsapp)}" target="_blank" rel="noopener">${formatarTelefone(a.whatsapp)}</a>
               </div>
               <button class="admin__btn" data-cancelar="${a.id}" data-nome="${esc(a.nome)}">Cancelar</button>
@@ -378,11 +378,73 @@ const PASSO = 30; // de quanto em quanto tempo os horários começam
         : '<p class="admin__empty">Nenhum horário bloqueado.</p>';
     };
 
+    // Histórico por cliente (agrupado pelo WhatsApp)
+    const semAcento = s => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    const fmtData = data => new Intl.DateTimeFormat('pt-BR', { timeZone: TZ, day: '2-digit', month: '2-digit', year: 'numeric' }).format(new Date(data));
+    const situacao = a => {
+      if (a.status === 'cancelado') return ['Cancelado', 'is-cancel'];
+      return Date.parse(a.inicio) < Date.now() ? ['Realizado', 'is-done'] : ['Agendado', 'is-next'];
+    };
+
+    const carregarClientes = async () => {
+      const box = el('clientes');
+      const { data, error } = await db.from('agendamentos')
+        .select('id, servico, inicio, nome, whatsapp, status')
+        .order('inicio', { ascending: false })
+        .limit(5000);
+      if (error) { box.innerHTML = `<p class="booking__error">${esc(error.message)}</p>`; return; }
+      if (!data.length) { box.innerHTML = '<p class="admin__empty">Ainda não há clientes. Elas aparecem aqui depois do primeiro agendamento.</p>'; return; }
+
+      const clientes = new Map();
+      data.forEach(a => {
+        if (!clientes.has(a.whatsapp)) clientes.set(a.whatsapp, { nome: a.nome, whatsapp: a.whatsapp, itens: [] });
+        clientes.get(a.whatsapp).itens.push(a); // o primeiro é o mais recente, então o nome fica o último usado
+      });
+
+      box.innerHTML = [...clientes.values()].map(c => {
+        const realizados = c.itens.filter(a => situacao(a)[0] === 'Realizado');
+        const proximo = c.itens.filter(a => situacao(a)[0] === 'Agendado').at(-1);
+        const contagem = realizados.reduce((m, a) => m.set(a.servico, (m.get(a.servico) || 0) + 1), new Map());
+        const resumo = [...contagem].map(([s, n]) => `${esc(nomes[s] || s)} <b>×${n}</b>`).join(' · ') || 'Nenhum atendimento realizado ainda';
+        return `
+          <details class="client" data-fone="${esc(c.whatsapp)}" data-busca="${esc(semAcento(c.nome))} ${esc(c.whatsapp)}">
+            <summary>
+              <div><strong>${esc(c.nome)}</strong><span>${formatarTelefone(c.whatsapp)}</span></div>
+              <div class="client__stats">
+                <span><b>${realizados.length}</b> ${realizados.length === 1 ? 'atendimento' : 'atendimentos'}</span>
+                <span>${realizados.length ? `Última vez: ${fmtData(realizados[0].inicio)}` : ''}${proximo ? `${realizados.length ? ' · ' : ''}Próximo: ${fmtData(proximo.inicio)}` : ''}</span>
+              </div>
+            </summary>
+            <div class="client__body">
+              <p class="client__summary">${resumo}</p>
+              <ul class="client__history">
+                ${c.itens.map(a => {
+                  const [rotulo, classe] = situacao(a);
+                  return `<li><span>${fmtData(a.inicio)} · ${fmtHora(a.inicio)}</span><span>${esc(nomes[a.servico] || a.servico)}</span><span class="client__status ${classe}">${rotulo}</span></li>`;
+                }).join('')}
+              </ul>
+              <a href="${linkCliente(c.whatsapp)}" target="_blank" rel="noopener" class="text-link">Chamar no WhatsApp →</a>
+            </div>
+          </details>`;
+      }).join('');
+      filtrarClientes();
+    };
+
+    const filtrarClientes = () => {
+      const termo = semAcento(el('buscaCliente').value.trim());
+      const digitos = termo.replace(/\D/g, '');
+      el('clientes').querySelectorAll('.client').forEach(c => {
+        const busca = c.dataset.busca;
+        c.hidden = !!termo && !busca.includes(termo) && !(digitos.length >= 4 && busca.includes(digitos));
+      });
+    };
+    el('buscaCliente').addEventListener('input', filtrarClientes);
+
     const mostrarPainel = async logado => {
       el('login').hidden = logado;
       painel.hidden = !logado;
       el('sair').hidden = !logado;
-      if (logado) await Promise.all([carregarAgendamentos(), carregarBloqueios()]);
+      if (logado) await Promise.all([carregarAgendamentos(), carregarBloqueios(), carregarClientes()]);
     };
 
     el('login').addEventListener('submit', async e => {
@@ -401,11 +463,23 @@ const PASSO = 30; // de quanto em quanto tempo os horários começam
     });
 
     el('lista').addEventListener('click', async e => {
+      const cliente = e.target.closest('[data-cliente]');
+      if (cliente) {
+        el('buscaCliente').value = '';
+        filtrarClientes();
+        const ficha = [...el('clientes').querySelectorAll('.client')].find(c => c.dataset.fone === cliente.dataset.cliente);
+        if (ficha) {
+          ficha.open = true;
+          ficha.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        return;
+      }
       const b = e.target.closest('[data-cancelar]');
       if (!b || !confirm(`Cancelar o horário de ${b.dataset.nome}? O horário volta a ficar livre no site.`)) return;
       const { error } = await db.from('agendamentos').update({ status: 'cancelado' }).eq('id', b.dataset.cancelar);
       if (error) alert(error.message);
       carregarAgendamentos();
+      carregarClientes();
     });
 
     el('bloqueios').addEventListener('click', async e => {
