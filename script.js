@@ -420,10 +420,13 @@ const PASSO = 30; // de quanto em quanto tempo os horários começam
               <ul class="client__history">
                 ${c.itens.map(a => {
                   const [rotulo, classe] = situacao(a);
-                  return `<li><span>${fmtData(a.inicio)} · ${fmtHora(a.inicio)}</span><span>${esc(nomes[a.servico] || a.servico)}</span><span class="client__status ${classe}">${rotulo}</span></li>`;
+                  return `<li><span>${fmtData(a.inicio)} · ${fmtHora(a.inicio)}</span><span>${esc(nomes[a.servico] || a.servico)}</span><span class="client__status ${classe}">${rotulo}</span><button type="button" class="client__del" data-excluir="${a.id}" title="Excluir este registro" aria-label="Excluir este registro">✕</button></li>`;
                 }).join('')}
               </ul>
-              <a href="${linkCliente(c.whatsapp)}" target="_blank" rel="noopener" class="text-link">Chamar no WhatsApp →</a>
+              <div class="client__actions">
+                <a href="${linkCliente(c.whatsapp)}" target="_blank" rel="noopener" class="text-link">Chamar no WhatsApp →</a>
+                <button type="button" class="admin__btn" data-excluir-cliente="${esc(c.whatsapp)}" data-nome="${esc(c.nome)}">Excluir cliente e histórico</button>
+              </div>
             </div>
           </details>`;
       }).join('');
@@ -439,6 +442,23 @@ const PASSO = 30; // de quanto em quanto tempo os horários começam
       });
     };
     el('buscaCliente').addEventListener('input', filtrarClientes);
+
+    // Excluir de vez (para testes ou registros errados). Cancelar continua sendo o normal.
+    el('clientes').addEventListener('click', async e => {
+      const registro = e.target.closest('[data-excluir]');
+      const cliente = e.target.closest('[data-excluir-cliente]');
+      if (!registro && !cliente) return;
+      const pergunta = registro
+        ? 'Excluir este registro de vez? Ele some do histórico e não dá para desfazer.\n\nSe a cliente só desmarcou, use "Cancelar" nos próximos atendimentos.'
+        : `Excluir ${cliente.dataset.nome} e TODO o histórico dela? Não dá para desfazer.`;
+      if (!confirm(pergunta)) return;
+      const consulta = db.from('agendamentos').delete();
+      const { error } = registro
+        ? await consulta.eq('id', registro.dataset.excluir)
+        : await consulta.eq('whatsapp', cliente.dataset.excluirCliente);
+      if (error) alert(error.message);
+      await Promise.all([carregarAgendamentos(), carregarClientes()]);
+    });
 
     const mostrarPainel = async logado => {
       el('login').hidden = logado;
