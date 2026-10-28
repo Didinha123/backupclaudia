@@ -338,3 +338,32 @@ h1 em, h2 em, .brand__name em { font-style: italic; color: var(--rust); }
 @media (max-width: 640px) {
   .booking--page { padding-top: 110px; }
 }
+
+/* Histórico de clientes (admin) */
+.admin__search { width: 100%; margin-bottom: 16px; }
+.admin__client-link { font: inherit; font-weight: 700; color: var(--ink); background: none; border: 0; padding: 0; cursor: pointer; border-bottom: 1.5px dashed var(--cream-200); }
+.admin__client-link:hover { color: var(--rust); border-color: var(--rust); }
+.client { border: 1px solid var(--cream-100); border-radius: 16px; margin-bottom: 10px; background: var(--bg); scroll-margin-top: 20px; }
+.client summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding: 14px 18px; }
+.client summary::-webkit-details-marker { display: none; }
+.client summary > div:first-child { display: grid; }
+.client summary strong { color: var(--ink); }
+.client summary span { font-size: .88rem; }
+.client__stats { display: grid; justify-items: end; text-align: right; font-size: .85rem; }
+.client__stats b { color: var(--rust); font-size: 1rem; }
+.client[open] summary { border-bottom: 1px dashed var(--cream-100); }
+.client__body { padding: 14px 18px 18px; display: grid; gap: 12px; }
+.client__summary { font-size: .92rem; }
+.client__summary b { color: var(--rust); }
+.client__history { list-style: none; display: grid; gap: 6px; }
+.client__history li { display: grid; grid-template-columns: 150px 1fr auto; gap: 10px; align-items: center; font-size: .9rem; padding: 6px 0; border-bottom: 1px dotted var(--cream-100); }
+.client__status { font-size: .72rem; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+.client__status.is-done { background: #e6ead8; color: var(--olive); }
+.client__status.is-next { background: var(--cream-100); color: var(--rust); }
+.client__status.is-cancel { background: #f3e1dc; color: #a33a1f; text-decoration: line-through; }
+.client .text-link { justify-self: start; }
+@media (max-width: 640px) {
+  .client__stats { justify-items: start; text-align: left; }
+  .client__history li { grid-template-columns: 1fr auto; }
+  .client__history li > :first-child { grid-column: 1 / -1; font-weight: 600; }
+}
